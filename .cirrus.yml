@@ -1,13 +1,12 @@
 env: # Environt variable to pass to all tasks
     CIRRUS_CLONE_DEPTH: 1 # No need to clone with whole history
     CIRRUS_WORKING_DIR: "/tmp/ci" # Where to clone repo
-    rclone_config: "ENCRYPTED[6c5f1a96709a125d7bbdd890ee23a1d8dce420c6b15ffd813c420ad196de944badc099c497fb3a6790dce729d15b55c7]"
-    RSA: "ENCRYPTED[18c100e68a8fbf3ad2879f8992369e045b19c921bb3c88383da9b2a2f401f62cb115f2525d3acf5b996b992eb46c9667]"
-    CHAT: "ENCRYPTED[53d27659af046815b23b95cd0c4aef002f882e0d21209bb63d2d32dc3fc24b4a154b7de04ee47e5ad2ede6345fc5e231]"
-    BOT: "ENCRYPTED[8926dee278b23df9a65d6a0410e825b6e80f45a3f6bb6ce862bacea00f886346c2f3a235bd6bd9633a147eedcaacffde]"
+    rclone_config: "ENCRYPTED[e893ec326b90c9c0314a0cbd1447f0c06f301708ce25c64ad97acf2d522ddcc49e22aa5e7bf5d95649195b0c9b74692b]"
+    CHAT: "ENCRYPTED[68d181ffb0e6c8d28be28b2dddbdbae870e9963debebc7133c23f05fe7eff340f504774ac4111f9c9290ec8a05f759aa]"
+    BOT: "ENCRYPTED[c083b1bccbca35ab1096eeb38e5291c504495691bda3a8015c89bd45cea8cd712ea2086888f240def665fce1993e3db8]"
 
 task:
-    name: Hatsune71
+    name: MiDoNaSR
     timeout_in: 120m
     container:
       image: apon77/aosp:latest
