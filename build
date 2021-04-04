@@ -12,15 +12,14 @@ cd /tmp/rom # Depends on where source got synced
 
 # Normal build steps
 dummy=false # use true for dummy build / use false to final build
-ROM_NAME=Ancient
+ROM_NAME=Dotos
 BRANCH_MANIFEST=$BRANCH
 DEVICE=ysl
 target_command="bacon"
-BUILDLOG="out/target/product/ysl/ancient_ci.log"
 . build/envsetup.sh
-lunch ancient_ysl-user
-export KBUILD_BUILD_USER=hats-project
-export KBUILD_BUILD_HOST=hats-ci
+lunch dot_ysl-userdebug
+export KBUILD_BUILD_USER=MiDoNaSR-project
+export KBUILD_BUILD_HOST=MiDoNaSR-ci
 export JAVA_TOOL_OPTIONS=-Xmx8g
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
@@ -52,7 +51,6 @@ function statusBuild() {
 		"<b>Command       :</b> <code>${target_command}</code>" \
 		"<b>Please Check Cirrus CI for Build Log Failed" \
     "<b>====== Build ROM Failed ======</b>"
-        sendLog "$BUILDLOG"
         exit $retVal
     fi
 	if [[ $retVal -eq 20 ]]; then
@@ -64,11 +62,8 @@ function statusBuild() {
 		"<b>Command       :</b> <code>${target_command}</code>" \
 		"<b>Build Paused and Uploading ccache for a moment" \
     "<b>====== Build ROM Failed ======</b>"
-        sendLog "$BUILDLOG"
         exit $retVal
     fi
-    PATHJSON=$(find $OUT -name "$ROM_NAME*.json")
-    sendTele "$PATHJSON"
     sendInfo \
     "<b>====== Build ROM Completed ======</b>" \
 		"<b>ROM Name      :</b> <code>${ROM_NAME}</code>" \
@@ -117,12 +112,10 @@ make_rom(){
 			# Record exit code after build
 			retVal=$?
 			statusBuild
-			sendLog "$BUILDLOG"
 		else
 			# Record exit code after build
 			retVal=$?
 			statusBuild
-			endLog "$BUILDLOG"
 		fi
 }
 
