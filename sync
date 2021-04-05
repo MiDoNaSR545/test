@@ -3,8 +3,6 @@
 MANIFEST=git://github.com/DotOS/manifest.git
 BRANCH=dot11
 
-ancient_dev=false
-
 mkdir -p /tmp/rom
 cd /tmp/rom
 
@@ -15,7 +13,7 @@ git config --global user.name MiDoNaSR545
 git config --global user.email ahmednasr1973913@gmail.com
 
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
-repo sync -c --no-clone-bundle -q --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+repo sync -c --no-clone-bundle -q --no-tags --optimized-fetch --prune --force-sync -j10 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 # Sync stuffs
 
@@ -26,18 +24,4 @@ git clone --single-branch https://github.com/Jabiyeff/android_hardware_qcom_disp
 git clone https://github.com/LineageOS/android_hardware_qcom_audio --depth=1 --single-branch -b lineage-18.1-caf-msm8996 hardware/qcom-caf/msm8996/audio
 git clone https://github.com/MiDoNaSR545/android_device_xiaomi_ysl -b dotos --depth=1 device/xiaomi/ysl
 git clone https://github.com/MiDoNaSR545/android_vendor_xiaomi_ysl -b r11.0 --depth=1 vendor/xiaomi/ysl
-git clone https://github.com/stormbreaker-project/kernel_xiaomi_ysl.git --depth=1 -b eleven kernel/xiaomi/ysl
-
-if [ "$ancient_dev" == "true" ]; then
-
-	# Ancient Dev Preview
-	find packages/apps/Settings packages/apps/AncientSettings frameworks/base -delete
-	git clone git@github.com:Ancient-Roms/packages_apps_Settings.git -b kakek15 packages/apps/Settings --depth=1
-	git clone git@github.com:Ancient-Roms/packages_apps_AncientSettings.git -b kakek15 packages/apps/AncientSettings --depth=1
-	git clone git@github.com:Ancient-Roms/frameworks_base.git -b kakek15 frameworks/base --depth=1
-	
-else
-	
-	echo "Move to Build Section"
-	
-fi
+git clone https://github.com/stormbreaker-project/kernel_xiaomi_ysl.git --depth=1 eleven kernel/xiaomi/ysl
