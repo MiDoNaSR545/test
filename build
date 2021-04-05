@@ -18,8 +18,6 @@ DEVICE=ysl
 target_command="bacon"
 . build/envsetup.sh
 lunch dot_ysl-userdebug
-export KBUILD_BUILD_USER=MiDoNaSR-project
-export KBUILD_BUILD_HOST=MiDoNaSR-ci
 export JAVA_TOOL_OPTIONS=-Xmx8g
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
@@ -98,9 +96,9 @@ up(){
 }
 
 make_metalava(){
-	make api-stubs-docs
-	make system-api-stubs-docs
-	make test-api-stubs-docs
+	make api-stubs-docs -j8
+	make system-api-stubs-docs -j8
+	make test-api-stubs-docs -j8
 }
 
 make_rom(){
