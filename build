@@ -96,15 +96,15 @@ up(){
 }
 
 make_metalava(){
-	make api-stubs-docs -j8
-	make system-api-stubs-docs -j8
-	make test-api-stubs-docs -j8
+	make api-stubs-docs -j10
+	make system-api-stubs-docs -j10
+	make test-api-stubs-docs -j10
 }
 
 make_rom(){
 		startTele
 		mkfifo reading
-		tee "${BUILDLOG}" < reading & make bacon -j8 > reading
+		tee "${BUILDLOG}" < reading & make bacon -j9 > reading
 		if [ -f out/target/product/ysl/*zip ]; then
 			send_zip=$(up out/target/product/ysl/*zip)
 			# Record exit code after build
