@@ -103,9 +103,9 @@ make_metalava(){
 make_rom(){
 		startTele
 		mkfifo reading
-		tee "${BUILDLOG}" < reading & make bacon -j9 > reading
-		if [ -f out/target/product/ysl/*zip ]; then
-			send_zip=$(up out/target/product/ysl/*zip)
+		tee "${BUILDLOG}" < reading & make bacon -j10 > reading
+		if [ -f out/target/product/ysl/dotOS-R-v5.0.0-ysl*.zip ]; then
+			send_zip=$(up out/target/product/ysl/dotOS-R-v5.0.0-ysl*.zip)
 			# Record exit code after build
 			retVal=$?
 			statusBuild
