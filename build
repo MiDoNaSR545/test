@@ -11,7 +11,7 @@ cd /tmp/rom # Depends on where source got synced
 # lets remove unnecessary things, so that no storage issue can occur
 
 # Normal build steps
-dummy=false # use true for dummy build / use false to final build
+dummy=true # use true for dummy build / use false to final build
 ROM_NAME=Dotos
 BRANCH_MANIFEST=$BRANCH
 DEVICE=ysl
@@ -97,7 +97,8 @@ up(){
 
 make_metalava(){
 	make api-stubs-docs -j10
-	make system-api-stubs-docs -j0
+	make system-api-stubs-docs -j10
+        make test-api-stubs-docs -j10
 }
 
 make_rom(){
@@ -118,7 +119,7 @@ make_rom(){
 
 if [ "$dummy" == "true" ]; then
 	make_metalava
-	make_rom & sleep 4140 && kill "$!" #this is a 1:20 hours timeout
+	make_rom & sleep 4300 && kill "$!" #this is a 1:20 hours timeout
 else
 	make_metalava
 	make_rom
