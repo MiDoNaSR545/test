@@ -18,7 +18,7 @@ DEVICE=ysl
 target_command="bacon"
 . build/envsetup.sh
 lunch dot_ysl-userdebug
-export JAVA_TOOL_OPTIONS=-Xmx8g
+export JAVA_TOOL_OPTIONS=-Xmx16g
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
@@ -96,17 +96,17 @@ up(){
 }
 
 make_metalava(){
-	make api-stubs-docs -j10
-	make system-api-stubs-docs -j10
-        make test-api-stubs-docs -j10
+	make api-stubs-docs
+	make system-api-stubs-docs
+        make test-api-stubs-docs
 }
 
 make_rom(){
 		startTele
 		mkfifo reading
-		tee "${BUILDLOG}" < reading & make bacon -j10 > reading
-		if [ -f out/target/product/ysl/dotOS-R-v5.0.0-ysl*.zip ]; then
-			send_zip=$(up out/target/product/ysl/dotOS-R-v5.0.0-ysl*.zip)
+		tee "${BUILDLOG}" < reading & make bacon -j8 > reading
+		if [ -f out/target/product/ysl/dotOS-R-v5.0.1-ysl*.zip ]; then
+			send_zip=$(up out/target/product/ysl/dotOS-R-v5.0.1-ysl*.zip)
 			# Record exit code after build
 			retVal=$?
 			statusBuild
