@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MANIFEST=git://github.com/DotOS/manifest.git
+MANIFEST=git://github.com/MiDoNaSR545/manifest-dot.git
 BRANCH=dot11
 
 mkdir -p /tmp/rom
@@ -13,15 +13,15 @@ git config --global user.name MiDoNaSR545
 git config --global user.email ahmednasr1973913@gmail.com
 
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
-repo sync -c --no-clone-bundle -q --no-tags --optimized-fetch --prune --force-sync -j11 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+repo sync -c --no-clone-bundle -q --no-tags --optimized-fetch --prune --force-sync -j10 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 # Sync stuffs
 
 find hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/media hardware/qcom-caf/msm8996/audio vendor/codeaurora/telephony -delete
-git clone https://github.com/wave-project/vendor_codeaurora_telephony --depth=1 --single-branch vendor/codeaurora/telephony -j10
-git clone --single-branch https://github.com/Jabiyeff/android_hardware_qcom_media hardware/qcom-caf/msm8996/media -j10
-git clone --single-branch https://github.com/Jabiyeff/android_hardware_qcom_display hardware/qcom-caf/msm8996/display -j10
-git clone https://github.com/LineageOS/android_hardware_qcom_audio --depth=1 --single-branch -b lineage-18.1-caf-msm8996 hardware/qcom-caf/msm8996/audio -j10
-git clone https://github.com/MiDoNaSR545/android_device_xiaomi_ysl -b dotos --depth=1 device/xiaomi/ysl -j10
-git clone https://github.com/MiDoNaSR545/android_vendor_xiaomi_ysl -b r11.0 --depth=1 vendor/xiaomi/ysl -j10
-git clone https://github.com/stormbreaker-project/kernel_xiaomi_ysl.git --depth=1 -b eleven kernel/xiaomi/ysl -j10
+git clone https://github.com/wave-project/vendor_codeaurora_telephony --depth=1 --single-branch vendor/codeaurora/telephony -j8
+git clone --single-branch https://github.com/Jabiyeff/android_hardware_qcom_media hardware/qcom-caf/msm8996/media -j8
+git clone --single-branch https://github.com/Jabiyeff/android_hardware_qcom_display hardware/qcom-caf/msm8996/display -j8
+git clone https://github.com/LineageOS/android_hardware_qcom_audio --depth=1 --single-branch -b lineage-18.1-caf-msm8996 hardware/qcom-caf/msm8996/audio -j8
+git clone https://github.com/MiDoNaSR545/android_device_xiaomi_ysl -b dotosop --depth=1 device/xiaomi/ysl
+git clone https://github.com/MiDoNaSR545/android_vendor_xiaomi_ysl -b r11.0 --depth=1 vendor/xiaomi/ysl -j8
+git clone https://github.com/stormbreaker-project/kernel_xiaomi_ysl.git --depth=1 -b eleven kernel/xiaomi/ysl -j8
