@@ -6,7 +6,7 @@ nproc
 cat /etc/os*
 env
 
-url=https://server.midonasr.workers.dev/dotos/ccache1.tar.gz
+url=server.midonasr.workers.dev/dot/ccache.tar.gz
 
 cd /tmp
 
