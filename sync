@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MANIFEST=git://github.com/MiDoNaSR545/manifest-dot.git
+MANIFEST=git://github.com/DotOS/manifest-dot.git
 BRANCH=dot11
 
 mkdir -p /tmp/rom
