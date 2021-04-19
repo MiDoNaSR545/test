@@ -17,7 +17,7 @@ BRANCH_MANIFEST=$BRANCH
 DEVICE=ysl
 target_command="bacon"
 . build/envsetup.sh
-lunch dot_ysl-userdebug
+lunch dot_ysl-user
 export WITH_GAPPS=true
 export JAVA_TOOL_OPTIONS=-Xmx16g
 export CCACHE_DIR=/tmp/ccache
