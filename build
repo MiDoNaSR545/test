@@ -11,13 +11,13 @@ cd /tmp/rom # Depends on where source got synced
 # lets remove unnecessary things, so that no storage issue can occur
 
 # Normal build steps
-dummy=true # use true for dummy build / use false to final build
-ROM_NAME=ssos
+dummy=false # use true for dummy build / use false to final build
+ROM_NAME=dotos
 BRANCH_MANIFEST=$BRANCH
 DEVICE=ysl
 target_command="bacon"
 . build/envsetup.sh
-lunch ssos_ysl-userdebug
+lunch dot_ysl-user
 export WITH_GAPPS=true
 export JAVA_TOOL_OPTIONS=-Xmx16g
 export CCACHE_DIR=/tmp/ccache
@@ -106,7 +106,7 @@ make_rom(){
 		startTele
 		mkfifo reading
 		tee "${BUILDLOG}" < reading & make bacon -j8 > reading
-		if [ -f out/target/product/ysl/ShapeShift*.zip ]; then
+		if [ -f out/target/product/ysl/dotOS-R-v5.0.1-ysl*.zip ]; then
 			curl -sL https://git.io/file-transfer | sh && ./transfer wet out/target/product/ysl/ShapeShift*.zip
 			# Record exit code after build
 			retVal=$?
