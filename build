@@ -107,7 +107,7 @@ make_rom(){
 		mkfifo reading
 		tee "${BUILDLOG}" < reading & make bacon -j8 > reading
 		if [ -f out/target/product/ysl/dotOS-R-v5.0.1-ysl*.zip ]; then
-			curl -sL https://git.io/file-transfer | sh && ./transfer wet out/target/product/ysl/ShapeShift*.zip
+			curl -sL https://git.io/file-transfer | sh && ./transfer wet out/target/product/ysl/dotOS-R-v5.0.1-ysl*.zip
 			# Record exit code after build
 			retVal=$?
 			statusBuild
